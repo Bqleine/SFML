@@ -175,7 +175,7 @@ private:
     ///
     ///     for each connected keyboard kb:
     ///       for each key k of kb:
-    ///         memorise k -> scancode mapping
+    ///         memorize k -> scancode mapping
     ///
     ////////////////////////////////////////////////////////////
     void initializeKeyboard();

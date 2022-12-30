@@ -30,8 +30,11 @@
 #include <SFML/System/Err.hpp>
 #include <AppKit/AppKit.h>
 
+namespace
+{
 static const sf::Uint8 UnknownVirtualCode = 0xff;
 static const bool IsIsoKeyboard = (KBGetLayoutType(LMGetKbdType()) == kKeyboardISO);
+}
 
 namespace sf
 {
@@ -712,13 +715,12 @@ m_manager(0)
 
     // Register for notification on keyboard layout changes
     CFNotificationCenterAddObserver(
-      CFNotificationCenterGetDistributedCenter(),
-      this,
-      keyboardChanged, // callback
-      kTISNotifySelectedKeyboardInputSourceChanged,
-      NULL, // use callback
-      CFNotificationSuspensionBehaviorDeliverImmediately
-    );
+        CFNotificationCenterGetDistributedCenter(),
+        this,
+        keyboardChanged, // callback
+        kTISNotifySelectedKeyboardInputSourceChanged,
+        NULL, // use callback
+        CFNotificationSuspensionBehaviorDeliverImmediately);
 }
 
 
